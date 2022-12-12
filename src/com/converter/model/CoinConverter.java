@@ -1,6 +1,6 @@
 package com.converter.model;
 
-public class CoinToCoin {
+public class CoinConverter {
 	
 	private static String[] coins = {
 		"Peso Colombiano",
@@ -14,9 +14,12 @@ public class CoinToCoin {
 	private double valueToConvert;
 	private String coinToConvert;
 	
-	public CoinToCoin(String coin, double valueToConvert, String coinToConvert){
+	public CoinConverter() {
+	}
+	
+	public CoinConverter(String coin, double valueToConvert, String coinToConvert){
 		try {
-			for(String coinInCoins: CoinToCoin.coins ) {
+			for(String coinInCoins: CoinConverter.coins ) {
 				if(coin.equals(coinInCoins)) {
 					this.coin = coin;
 				}
@@ -25,18 +28,24 @@ public class CoinToCoin {
 				}
 			}
 			this.valueToConvert = valueToConvert;
-		}
-		catch(Exception e) {
 			
+			if(this.coin == null || this.coinToConvert == null) {
+				throw new Exception("'El tipo de valor a convertir no se ha encontrado'");
+			}
+		}
+		catch(Exception e ) {
+			System.err.println("Se ha generado un Error: " + e.getMessage());
 		};
 	}
 	
-	public CoinToCoin() {
 
-	}
 
 	public String getCoin() {
 		return coin;
+	}
+	
+	public String[] getCoins() {
+		return CoinConverter.coins;
 	}
 
 	public void setCoin(String coin) {
