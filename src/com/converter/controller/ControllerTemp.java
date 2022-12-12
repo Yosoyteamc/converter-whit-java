@@ -9,7 +9,6 @@ public class ControllerTemp {
 	public static double validateTemp(String val) {
 		try {
 			double value = Double.valueOf(val);
-			System.out.println(value);
 			return value;
 		}
 		catch (Exception e) {
